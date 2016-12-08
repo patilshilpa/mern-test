@@ -8,6 +8,7 @@ import app from './modules/App/AppReducer';
 import posts from './modules/Post/PostReducer';
 import intl from './modules/Intl/IntlReducer';
 import sign from './modules/singup/SingupReducer';
+import login from './modules/login/loginReducer'
 
 // Combine all reducers into one root reducer
 export default combineReducers({
@@ -15,4 +16,5 @@ export default combineReducers({
   posts,
   intl,
   sign,
+  login,
 });

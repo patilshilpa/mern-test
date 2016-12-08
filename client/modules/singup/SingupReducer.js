@@ -1,6 +1,7 @@
 import {add_Singup } from './SingupActions';
 
 
+
 // Initial State
 const initialState = {
    isRegistering : "True",
@@ -21,4 +22,11 @@ const SingupReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+
 export default SingupReducer
+
+
+
+
+

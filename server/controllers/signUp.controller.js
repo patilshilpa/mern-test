@@ -6,7 +6,7 @@ import mailgunjs from 'mailgun-js';
 
 export function addsignup(req, res) {
   console.log("request",req.body);
-  if (!req.body.user.name || !req.body.user.email || !req.body.user.phoneno) {
+  if (!req.body.user.name || !req.body.user.email || !req.body.user.phoneno || !req.body.user.Password ) {
     res.status(403).end();
   }
   const newsignup = new Signup(req.body.user);
@@ -17,9 +17,10 @@ export function addsignup(req, res) {
   newsignup.name = sanitizeHtml(newsignup.name);
   newsignup.email = sanitizeHtml(newsignup.email);
   newsignup.phoneno = sanitizeHtml(newsignup.phoneno);
+  newsignup.Password  = sanitizeHtml(newsignup.Password);
+
   console.log("called ",newsignup);
-
-
+  
   var api_key = 'key-62eec1607aff8b69784dacfae6fe3604';
   var domain = 'sandbox9f183cb6f7764f7db6fc30618417f767.mailgun.org';
   process.env.MAIL_URL = 'smtp://postmaster@sandbox9f183cb6f7764f7db6fc30618417f767.mailgun.org:peoplelink@smtp.mailgun.org:587';
@@ -44,20 +45,14 @@ mailgun.messages().send(data, function (error, body) {
       }
 });
 
-
+ // newsignup.cuid = cuid();
   newsignup.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
     }
     res.json({ user: saved });
-
   });
 }
-
-
-
-
-
 
 
 

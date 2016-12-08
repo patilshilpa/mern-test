@@ -4,7 +4,7 @@ import * as UserController from '../controllers/signUp.controller';
 
 const router = new Router();
 
-// Get all Posts
+// Get  signup page 
 router.route('/signUp').post(UserController.addsignup);
 //router.route('/signUp').post(UserController.SendEmail);
 

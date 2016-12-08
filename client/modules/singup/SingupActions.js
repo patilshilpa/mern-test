@@ -20,12 +20,10 @@ export function submitFormRequest(user) {
         name: user.name,
         email: user.email,
         phoneno:user.phoneno,
+        Password:user.Password,
       },
     }).then(res => dispatch(addSingup(res.user)));
        
   }
 }
-
-
-
 

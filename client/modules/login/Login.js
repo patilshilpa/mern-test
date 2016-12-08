@@ -1,61 +1,53 @@
 import React,{ Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-/*import { submitFormRequest } from './SingupActions'
-*//*import {Grid, Row, Col, Button, Well, Input,ButtonInput}
- from 'react-bootstrap';*/
+import { FormRequest } from './loginActions';
+
 
 class Login extends Component {
 
-  /*constructor(props) {
+  constructor(props) {
     super(props);
     
     this.state = {
-      name: '',
       email:'',
-      phoneno:'',
+      Password:'',
     };
 
-    this.handleName = this.handleName.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
-    this.handlePhoneno = this.handlePhoneno.bind(this);
-    this.signUp = this.signUp.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.login = this.login.bind(this);
   }
 
-  handleName(event) {
-    this.setState({name: event.target.value});
-    console.log("name",event.target.value);
-  }
-
+  
   handleEmail(event) {
     console.log(event.target.value);
     this.setState({email: event.target.value});
   }
 
-  handlePhoneno(event) {
-    this.setState({phoneno: event.target.value});
-    console.log("phoneno",event.target.value);
+  handlePassword(event) {
+    this.setState({Password: event.target.value});
+    console.log("Password",event.target.value);
   }
 
   login(event) {
     event.preventDefault();
-    console.log("dcss",event.target.value);
-    let name = this.refs.name.value;
+    console.log("hi ", event.target.value);
     let email = this.refs.email.value;
-    let  phoneno = this.refs.phoneno.value;
-    if (name && email && phoneno) {
-      this.props.dispatch(submitFormRequest({name,email,phoneno}));
-      console.log("submitFormRequest",submitFormRequest);
+    let Password = this.refs.Password.value;
+    if (email && Password) {
+      this.props.dispatch(FormRequest({email,Password}));
+      console.log("FormRequest",FormRequest);
     }
 
-  }*/
+  }
 
   render() {
     return (
       <form>
-          Email: <input type="text" name="Email" ref= "email"/> <br/><br/>
-          PhoneNo: <input type ="text" name="Phoneno" ref="phoneno"/><br/><br/>
-          <input type="submit" value="Submit"/>
+          Email: <input type="text" name="Email" value ={this.state.email}  onChange={this.handleEmail}  ref= "email"/> <br/><br/>
+          Password : <input type ="text" name="Password" value = {this.state.Password}  onChange={this.handlePassword}  ref="Password"/><br/><br/>
+          <input type="submit" onClick= {this.login}  value="Submit"/>
       </form>
     )
   }

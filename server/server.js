@@ -36,6 +36,7 @@ import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import signUp from './routes/signUp.routes';
+import login from './routes/login.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -58,10 +59,10 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
-app.use('/api', [posts,signUp]);
+app.use('/api', [posts,signUp,login]);
 
 // token key
-app.set('superSecret', config.secret);
+app.set('superSecret',serverConfig.secret);
 app.use(morgan('dev'));
 
 // Render Initial HTML
