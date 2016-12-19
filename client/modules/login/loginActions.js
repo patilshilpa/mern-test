@@ -1,9 +1,12 @@
 import callApi from '../../util/apiCaller';
 
 export const login_data = 'login_data';
+
 //Export Actions
 export function loginData(login) {
-  console.log("inaction");
+  if(login){
+    localStorage.setItem("token", login.token);
+  }
   return {
     type: login_data,
     login,
@@ -20,3 +23,4 @@ export function FormRequest(login){
     }).then(res=>dispatch(loginData(res.login)));
   }
 }
+

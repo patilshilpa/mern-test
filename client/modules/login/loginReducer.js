@@ -12,9 +12,10 @@ const LoginReducer = (state = initialStates, action) => {
   switch (action.type) {
     case login_data:
       return Object.assign({}, state, {
-           isFetching : "True",
-           isFetched : "False",
-           isFailed : "False"
+           isFetching : "False",
+           isFetched : "True",
+           isFailed : "False",
+           data : action.login
       })
 
     default:

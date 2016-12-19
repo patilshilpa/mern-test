@@ -37,6 +37,9 @@ import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import signUp from './routes/signUp.routes';
 import login from './routes/login.routes';
+import email from './routes/email.routes';
+
+
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -59,7 +62,7 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
-app.use('/api', [posts,signUp,login]);
+app.use('/api', [posts,signUp,login,email]);
 
 // token key
 app.set('superSecret',serverConfig.secret);
@@ -86,6 +89,9 @@ const renderFullPage = (html, initialState) => {
         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css">
       </head>
       <body>
         <div id="root">${html}</div>

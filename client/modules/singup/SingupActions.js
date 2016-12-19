@@ -1,4 +1,7 @@
 import callApi from '../../util/apiCaller';
+import { browserHistory } from 'react-router';
+//import md5 from 'md5'; 
+
 
 // Export Constants
 export const add_Singup = 'add_Singup';
@@ -6,7 +9,6 @@ export const add_Singup = 'add_Singup';
 
 //Export Actions
 export function addSingup(user) {
-  console.log("inaction");
   return {
     type: add_Singup,
     user,

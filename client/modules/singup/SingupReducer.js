@@ -15,7 +15,8 @@ const SingupReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isRegistering : "False",
         isRegistered : "True",
-        isRegisteredFailed : "False"
+        isRegisteredFailed : "False",
+        data: action.user
       })
 
     default:

@@ -1,8 +1,10 @@
   /* eslint-disable global-require */
 import React from 'react';
+import { browserHistory } from 'react-router';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
 import Singup from './modules/singup/Singup';
+//import contactus from './modules/Contatus/contactus';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -57,5 +59,18 @@ export default (
         });
       }}
     />
+
+
+      <Route
+      path="/email"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Email-notifications/Email').default);
+        });
+      }}
+    />
+
    </Route>
 );
+
+
