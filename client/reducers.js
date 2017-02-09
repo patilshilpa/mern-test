@@ -10,6 +10,7 @@ import intl from './modules/Intl/IntlReducer';
 import sign from './modules/singup/SingupReducer';
 import login from './modules/login/loginReducer';
 import Email from './modules/Email-notifications/EmailReducer';
+import UploadFile from './modules/upload/UploadReducer';
 
 
 // Combine all reducers into one root reducer
@@ -20,4 +21,5 @@ export default combineReducers({
   sign,
   login,
   Email,
+  UploadFile,
 });

@@ -13,6 +13,9 @@ import config from '../webpack.config.dev';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
+/*import axios from 'axios';
+import multer from 'multer';
+*/
 // Initialize the Express App
 const app = new Express();
 
@@ -38,6 +41,7 @@ import posts from './routes/post.routes';
 import signUp from './routes/signUp.routes';
 import login from './routes/login.routes';
 import email from './routes/email.routes';
+import upload from './routes/upload.router';
 
 
 import dummyData from './dummyData';
@@ -62,11 +66,15 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
-app.use('/api', [posts,signUp,login,email]);
+app.use('/api', [posts,signUp,login,email,upload]);
 
 // token key
 app.set('superSecret',serverConfig.secret);
 app.use(morgan('dev'));
+
+
+
+
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -75,6 +83,11 @@ const renderFullPage = (html, initialState) => {
   // Import Manifests
   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
+
+
+
+
+
 
   return `
     <!doctype html>
@@ -152,6 +165,9 @@ app.use((req, res, next) => {
       .catch((error) => next(error));
   });
 });
+
+
+
 
 // start app
 app.listen(serverConfig.port, (error) => {

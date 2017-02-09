@@ -69,6 +69,25 @@ export default (
         });
       }}
     />
+    
+
+     <Route
+      path="/upload"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/upload/Upload').default);
+        });
+      }}
+    />
+
+     <Route
+      path="/todo"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Todolist/TodoList').default);
+        });
+      }}
+    />
 
    </Route>
 );
